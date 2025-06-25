@@ -1,0 +1,6 @@
+all:
+  hosts:
+    web01:
+      ansible_host: 192.168.10.13
+      ansible_user: vagrant
+      
