@@ -1,0 +1,34 @@
+all:
+  hosts:
+    web01:
+      ansible_host: 192.168.10.13
+      
+      
+    web02:
+      ansible_host: 192.168.10.14
+      
+
+    db01:
+      ansible_host: 192.168.10.15
+      
+
+
+
+
+
+#....grouping.......
+
+  children:
+    webservers:
+      hosts:
+        web01:
+        web02:
+    dbservers:
+      hosts:
+        db01:
+    parent_grp:
+      children:
+        webservers:
+        dbservers:
+      vars:
+        ansible_user: vagrant
