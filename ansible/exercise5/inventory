@@ -2,21 +2,18 @@ all:
   hosts:
     web01:
       ansible_host: 192.168.33.24
-      ansible_user: vagrant
+      
       
     web02:
       ansible_host: 192.168.33.25
-      ansible_user: vagrant
+      
 
     db01:
       ansible_host: 192.168.33.15
-      ansible_user: vagrant
+      
 
 
-
-
-
-#....grouping.......
+#....grouping & Variables.......
 
   children:
     webservers:
@@ -30,3 +27,6 @@ all:
       children:
         webservers:
         dbservers:
+      vars:
+        ansible_user: vagrant
+        ansible_python_interpreter: /usr/bin/python3.9
