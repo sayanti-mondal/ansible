@@ -15,10 +15,10 @@
         enabled: yes
 
 
-          # - name: Install PyMySQL dependency
-          #ansible.builtin.yum:
-          #name: python3-PyMySQL # Or other specific package name
-          #state: present
+    - name: Install PyMySQL dependency
+      ansible.builtin.yum:
+        name: python3-PyMySQL # Or other specific package name
+        state: present
 
 
     - name: Create a new database with name 'bobdata'
