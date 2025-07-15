@@ -7,8 +7,9 @@
 5. Exercise5 - Installs tomcat service on two centos target machines, starts & enable the web service, update the default home page with a customized one
 6. Exercise6 - Installs mariadb service on a centos target machine, starts & enables the Database service, Creates a Database and database user
 7. Exercise7 - Introducing ansible.cfg file the working directory, where we mentioned the inventory file location, log file location and other settings. Thats why to run the playbook we dont need to mention inventory path anymore. we can just run ansible-playbook <playbook_name>
-8. Exercise8 - In this playbook demonstrated playbook variables and output variables. 
-    variables
+8. Exercise8 - In this playbook demonstrated playbook variables and output variables.
+ 
+    variables are of 4 types generally in ansible
      - variables defined in playbooks
      - inventory based variables
      - Fact variables
