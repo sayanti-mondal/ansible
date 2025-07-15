@@ -15,18 +15,18 @@
      - Fact variables
      - Output variable 
 
-    defined variables inside playbook using var key. it is generally mentioned before tasks.
+    Declare Variable - defined variables inside playbook using var key. it is generally mentioned before tasks.
       var:
        db_name: value
        db_user: value
        db_pass: value  
    
-    How to use those variables inside a task with syntax "{{ var_name }}" [double quotes within that two curly braces]
+    Use Variable - How to use those variables inside a task with syntax "{{ var_name }}" [double quotes within that two curly braces]
 
-    Use Debug module to print those variables in two different method 
+    print Variable - Use Debug module to print those variables in two different method 
       - inside a message:- msg: " Database name is {{db_name}} "
       - var: db_name
  
-    how to register output of a task as a variable and then print it
+    Register output variable - how to register output of a task as a variable and then print it
         
 #############################################################################
