@@ -1,0 +1,55 @@
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  vars:
+    db_name: students
+    db_user: sia
+    db_pass: 12345
+        
+  tasks:
+    - debug:
+        msg: " The dbname is {{db_name}} "
+
+    - debug:
+        var: db_user
+
+    - name: Install mariaDB-server
+      yum:
+        name: mariadb-server
+        state: present
+
+    - name: Start MariaDB service
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+
+    - name: Install PyMySQL dependency
+      ansible.builtin.yum:
+        name: python3-PyMySQL # Or other specific package name
+        state: present
+
+
+    - name: Create a new database 
+      mysql_db:
+        name: "{{ db_name }}"
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+      become: yes
+
+    - name: Create database user with all database privileges
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_pass }}"
+        priv: '*.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+      become: yes
+      register: db_user_output
+
+    - name: print db_user_output variable
+      debug:
+        var: db_user_output
+
