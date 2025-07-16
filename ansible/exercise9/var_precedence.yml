@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+    #vars: 
+    #uname: playbook_user
+    #ucomment: Taken variable from playbook
+
+  tasks:
+    - name: create a user
+      ansible.builtin.user:
+        name: "{{ uname }}"
+        comment: "{{ ucomment }}"
+      register: usrout
+
+    - debug:
+        var: usrout.name
+
+    - debug:
+        var: usrout.comment
+
+

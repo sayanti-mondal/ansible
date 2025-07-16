@@ -1,0 +1,25 @@
+---
+- name: list & dictionary variables
+  hosts: localhost
+  vars:
+    # Defining a list variable
+    region:
+      - northeast
+      - southeast
+      - midwest
+
+    # Defining a dic variable
+    foo:
+      field1: one
+      field2: two
+
+  tasks:
+    - name: access the list variable 
+      debug:
+        var: region[0]
+   
+    - name: access the dictionary variable
+      debug:
+        var: foo['field1']
+
+
