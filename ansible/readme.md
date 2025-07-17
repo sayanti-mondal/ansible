@@ -35,6 +35,11 @@
        - print_facts.yml:- Created a playbook to print different Fact variables of all the target srrvers. This variables are created during the task "gathering facts"  
        - ansible variables documentation link - https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html  
        - Runtime variable/environment variable command -> ansible-playbook example.yml -e "variable_name=value"  
-             
+            
+10. Exercise10 - In this project discussed about condition   
+           - playbook installs chrony when os is centos but installs ntp when os is ubuntu  
+           - condition is denoted by when and declared in the same column of module  
+           - ansible condition documentation:- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
+     
         
 #############################################################################

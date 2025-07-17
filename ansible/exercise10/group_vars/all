@@ -1,0 +1,2 @@
+uname: commonuser
+ucomment: variable from group_vars/all file
