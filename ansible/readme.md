@@ -29,10 +29,10 @@
  
     Register output variable - how to register output of a task as a variable and then print it
 
-9. Exercise9 - In this project demonstated variable precedence concept based on the location of variable and list, dictionary, environment variables  
-       - Defined same variables in playbook, group_vars/all, group_vars/webservers, host_vars/web02  
-       - variable precedence is environment_variables > playbook_variables > host_vars > group_vars/<group_name> > group_vars/all  
-       - Then we created another playbook to understand the concept of list and dictionary variables  
+9. Exercise9 - In this project demonstated  
+       - variable precedence concept based on the location of variable.Defined same variables in playbook, group_vars/all, group_vars/webservers, host_vars/web02. variable precedence is environment_variables > playbook_variables > host_vars > group_vars/<group_name> > group_vars/all  
+       - Then we created another playbook to understand the concept of list and dictionary variables
+       - Created a playbook to print different Fact variables of all the target srrvers. This variables are created during the task "gathering facts"  
        - ansible variables documentation link - https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html  
        - Runtime variable/environment variable command -> ansible-playbook example.yml -e "variable_name=value"  
              
