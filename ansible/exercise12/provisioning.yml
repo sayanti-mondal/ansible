@@ -1,0 +1,44 @@
+- name: Install and start multiple services using for loop based on OS
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install multiple packages on centos 
+      ansible.builtin.yum:
+        name: "{{ item }}"
+        state: present
+      when: ansible_distribution == "CentOS"
+      loop: 
+        - chrony
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Install multiple packages on ubuntu
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+      loop: 
+        - ntp
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Start and enable chrony service on CentOS
+      ansible.builtin.service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Start and enable ntp service on Ubuntu
+      ansible.builtin.service:
+        name: ntp
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+

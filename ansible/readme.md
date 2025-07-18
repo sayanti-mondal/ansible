@@ -41,5 +41,6 @@
            - condition is denoted by when and declared in the same column of module  
            - ansible condition documentation:- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
      
+11. Exercise11 - Install multiple packages using for loop
         
 #############################################################################
