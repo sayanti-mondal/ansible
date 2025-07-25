@@ -1,0 +1,30 @@
+---
+# tasks file for apache_install
+
+- name: Ensure apache is at the latest version
+  ansible.builtin.yum:
+    name: httpd
+    state: latest
+
+- name: Write the apache config file
+  ansible.builtin.template:
+    src: httpd.j2
+    dest: /etc/httpd.conf
+  notify:
+    - Restart apache
+
+- name: Ensure apache is running
+  ansible.builtin.service:
+    name: httpd
+    state: started
+
+- name: Dump file
+  copy:
+    src: myfile.txt
+    dest: /tmp/myfile.txt
+
+- name: create a directory
+  file:
+    path: /opt/test21
+    state: directory
+

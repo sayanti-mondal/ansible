@@ -1,2 +1,2 @@
-uname: webgroup
-ucomment: variable from group_vars/webservers file
+apache_port: 8080
+document_root: /var/www/html

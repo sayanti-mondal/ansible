@@ -42,5 +42,16 @@
            - ansible condition documentation:- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
      
 11. Exercise11 - Install multiple packages using for loop
-        
+
+12. Exercise12 - Using the concept of template module, jinja2 templating and handlers updating the configuration of apache configuration file and then restart the service using handlers.  
+            - handlers: Sometimes you want a task to run only when a change is made on a machine. handlers are written in the same column as tasks.   
+            - jinja2 templating is used for changing the default configuartion of a software, like apache running port 8081 instead of 80. It is written under template module.  
+            - Often handler is used with jinja2 templating, since a task need to run only when there is a configuration change made by jinja2 template 
+ 
+13. Exercise13 - create a role from the existing ansible playbook  
+               - ansible-galaxy init <rolename> : is the command to create a role  
+               - role is genearlly created under roles folder and defined in the ansible playbook  
+               - when we run the playbook, it executes the role mentioned in the playbook
+
+
 #############################################################################

@@ -1,0 +1,7 @@
+---
+# vars file for apache_install
+apache_port: 6000
+document_root: /var/www/html
+http_port: 8081
+max_clients: 200
+

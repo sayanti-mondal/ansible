@@ -1,0 +1,7 @@
+---
+- name: Verify apache installation
+  hosts: web01
+  become: yes
+  roles:
+    - apache_install
+    

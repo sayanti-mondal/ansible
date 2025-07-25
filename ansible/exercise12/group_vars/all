@@ -1,2 +1,2 @@
-uname: commonuser
-ucomment: variable from group_vars/all file
+apache_port: 6000
+document_root: /var/www/html

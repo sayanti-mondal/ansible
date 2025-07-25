@@ -1,0 +1,71 @@
+- name: Simple Ansible handler and Jinja2 demo
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Force apt update ignoring time issues
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        ignore_errors: yes
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install Apache (Ubuntu)
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install Apache (CentOS)
+      yum:
+        name: httpd
+        state: latest
+      when: ansible_distribution == "CentOS"
+
+    - name: Start and enable Apache (Ubuntu)
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start and enable Apache (CentOS)
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+
+    - name: Deploy Apache config using template
+      template:
+        src: templates/apache.conf.j2
+        dest: /etc/apache2/sites-available/000-default.conf
+      when: ansible_distribution == "Ubuntu"
+      notify: Restart Apache
+
+    - name: Deploy Apache config using template (CentOS)
+      template:
+        src: templates/apache.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+      when: ansible_distribution == "CentOS"
+      notify: Restart Apache
+
+  handlers:
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+
+    - name: Restart httpd
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
