@@ -1,0 +1,33 @@
+- hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Create a keypair
+      amazon.aws.ec2_key:
+        name: my_keypair
+          #no_log: true
+        aws_region: us-east-1
+      register: aws_private_key
+
+        #- name: print the private key
+        #debug:
+        #var: aws_private_key
+
+
+    - name: copy the content of private key to a pem file
+      copy:
+        content: "{{ aws_private_key.key.private_key }}"
+        dest: ./key.pem
+      when: aws_private_key.changed
+
+    - name: start an instance 
+      amazon.aws.ec2_instance:
+        name: "ansible-instance"
+        key_name: "my_keypair"
+          #vpc_subnet_id: subnet-5ca1ab1e
+        instance_type: t2.micro
+        security_group: default
+          #network_interfaces:
+          #assign_public_ip: true
+        image_id: ami-08a6efd148b1f7504
+        tags:
+          Environment: Testing

@@ -53,5 +53,13 @@
                - role is genearlly created under roles folder and defined in the ansible playbook  
                - when we run the playbook, it executes the role mentioned in the playbook
 
+14. aws - In this folder created a playbook to create an aws keypair and then created an ec2 instance with that key pair  
+              - ansible can talk to aws through access_key and secret_access_key  
+                  export AWS_ACCESS_KEY_ID='AK123'
+                  export AWS_SECRET_ACCESS_KEY='abc123'  
+                ansible doc link - https://docs.ansible.com/ansible/latest/collections/amazon/aws/docsite/guide_aws.html  
+              - The amazon.aws collection contains a number of modules and plugins for controlling Amazon Web Services (AWS)  
+              - modules doc - https://docs.ansible.com/ansible/latest/collections/amazon/aws/index.html#module-development-guidelines
+
 
 #############################################################################
